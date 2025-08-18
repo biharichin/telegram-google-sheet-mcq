@@ -20,7 +20,7 @@ def get_sheet():
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         # Load credentials from environment variable
         creds_json = json.loads(GOOGLE_CREDENTIALS_JSON)
-        creds = gspread.service_account_from_dict(creds_json, scopes=scope)
+        client = gspread.service_account_from_dict(creds_json, scopes=scope)
         
         sheet = client.open(GOOGLE_SHEET_NAME).sheet1
         return sheet
