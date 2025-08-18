@@ -79,7 +79,7 @@ def send_poll(chat_id, question, options, correct_option_id):
         print(f"Failed to send poll to {chat_id}: {e}")
 
 # --- Question Generation ---
-def generate_and_send_question(word_data, all_words):
+def send_single_question(word_data, all_words):
     """Generates a random question and sends it to all chat IDs."""
     question_type = random.choice(["meaning", "synonym", "antonym", "unscramble"])
     word = word_data["Word"]
@@ -154,7 +154,8 @@ if __name__ == "__main__":
         send_message(chat_id, "Bot is starting... preparing questions.")
 
     for word_data in words_to_send:
-        generate_and_send_question(word_data, all_words)
+        for _ in range(3): # Send 3 questions per word
+            send_single_question(word_data, all_words)
     
     save_progress(end_index)
     print("Script finished.")
