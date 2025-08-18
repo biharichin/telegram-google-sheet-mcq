@@ -7,9 +7,9 @@ on:
   workflow_dispatch: # Allows manual running from the Actions tab
 
 jobs:
-  permissions:
-    contents: write
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
