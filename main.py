@@ -25,7 +25,11 @@ def get_sheet():
         sheet = client.open(GOOGLE_SHEET_NAME).sheet1
         return sheet
     except Exception as e:
-        print(f"Error connecting to Google Sheets: {e}")
+        import traceback
+        print(f"Error connecting to Google Sheets. The raw error is: {e}")
+        print("--- Full Traceback --- ")
+        traceback.print_exc()
+        print("----------------------")
         return None
 
 # --- Progress Tracking ---
