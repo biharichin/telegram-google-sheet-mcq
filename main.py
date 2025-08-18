@@ -21,7 +21,7 @@ def get_sheet():
         # Load credentials from environment variable
         creds_json = json.loads(GOOGLE_CREDENTIALS_JSON)
         creds = gspread.service_account_from_dict(creds_json, scopes=scope)
-        client = gspread.authorize(creds)
+        
         sheet = client.open(GOOGLE_SHEET_NAME).sheet1
         return sheet
     except Exception as e:
